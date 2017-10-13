@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.LinearLayout;
 
 import com.github.app.MainActivity;
@@ -17,7 +18,7 @@ import com.github.app.MainActivity;
  * on 2017/10/13.
  */
 
-public class BaseActivity  extends AppCompatActivity {
+public class BaseActivity  extends AppCompatActivity implements View.OnClickListener{
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,4 +57,8 @@ public class BaseActivity  extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onClick(View v) {
+
+    }
 }

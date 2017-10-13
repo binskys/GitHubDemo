@@ -44,6 +44,7 @@
         <activity android:name=".ui.WebActivity" />
         <activity android:name=".ui.demo.PatternLockActivity" />
         <activity android:name=".ui.demo.ShadowActivity" />
+        <service android:name=".service.GitHubService" />
     </application>
 
 </manifest>
