@@ -44,6 +44,24 @@
                 android:layout_height="wrap_content"
                 android:text="Unbind Service"
                 android:textAllCaps="false" />
+            <Button
+                android:id="@+id/register"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="注册广播"
+                android:textAllCaps="false" />
+            <Button
+                android:id="@+id/un_register"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="注销广播"
+                android:textAllCaps="false" />
+            <Button
+                android:id="@+id/btn_send"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="发送广播"
+                android:textAllCaps="false" />
         </LinearLayout>
     </HorizontalScrollView>
 

@@ -1,4 +1,4 @@
-package com.github.app.utils;
+package com.github.app.service;
 
 import android.content.Context;
 import android.content.Intent;

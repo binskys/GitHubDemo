@@ -45,6 +45,15 @@
         <activity android:name=".ui.demo.PatternLockActivity" />
         <activity android:name=".ui.demo.ShadowActivity" />
         <service android:name=".service.GitHubService" />
+        <receiver
+            android:name=".broadcastreceiver.MyBroadcastReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE">
+                </action>
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

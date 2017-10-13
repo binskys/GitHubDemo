@@ -3,37 +3,34 @@ package com.github.app;
 import android.animation.Animator;
 import android.animation.ObjectAnimator;
 import android.content.ComponentName;
-import android.content.Intent;
 import android.content.ServiceConnection;
+import android.os.Binder;
 import android.os.IBinder;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.github.app.adapter.GitHubAdapter;
+import com.github.app.broadcastreceiver.BRUtils;
 import com.github.app.service.GitHubService;
 import com.github.app.ui.BaseActivity;
-import com.github.app.ui.WebActivity;
 import com.github.app.ui.demo.PatternLockActivity;
 import com.github.app.ui.demo.ShadowActivity;
 import com.github.app.utils.DataBean;
 import com.github.app.utils.DataUtils;
 import com.github.app.utils.LogUtils;
-import com.github.app.utils.ServiceUtils;
+import com.github.app.service.ServiceUtils;
 import com.github.app.utils.ToastUtils;
 import com.willowtreeapps.spruce.Spruce;
 import com.willowtreeapps.spruce.animation.DefaultAnimations;
 import com.willowtreeapps.spruce.sort.DefaultSort;
-import com.willowtreeapps.spruce.sort.SortFunction;
-import com.willowtreeapps.spruce.sort.SpruceTimedView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class MainActivity extends BaseActivity {
 
@@ -137,6 +134,9 @@ public class MainActivity extends BaseActivity {
         findViewById(R.id.btn_stop).setOnClickListener(this);
         findViewById(R.id.bind_service).setOnClickListener(this);
         findViewById(R.id.unbind_service).setOnClickListener(this);
+        findViewById(R.id.register).setOnClickListener(this);
+        findViewById(R.id.un_register).setOnClickListener(this);
+        findViewById(R.id.btn_send).setOnClickListener(this);
     }
 
     @Override
@@ -155,6 +155,28 @@ public class MainActivity extends BaseActivity {
             case R.id.unbind_service:
                 ServiceUtils.unBind(this,connection);
                 break;
+            case R.id.register:
+                BRUtils.register(this,"com.github.app.broadcastreceiver");//监听网络状态广播
+                break;
+            case R.id.un_register:
+                BRUtils.unRegister(this);
+                break;
+            case R.id.btn_send:
+                Timer time=new Timer();
+                TimerTask task=  new TimerTask() {
+                    @Override
+                    public void run() {
+                        BRUtils.send(MainActivity.this,"com.github.app.broadcastreceiver");
+                    }
+                };
+                time.schedule(task,1000,3000);
+                break;
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        BRUtils.unRegister(this);
     }
 }
