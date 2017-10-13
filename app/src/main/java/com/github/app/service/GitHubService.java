@@ -15,6 +15,7 @@ import com.github.app.utils.LogUtils;
 /**
  * Created by benny
  * on 2017/10/13.
+ * 服务
  */
 
 public class GitHubService extends Service {
@@ -26,13 +27,15 @@ public class GitHubService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
-        initNotice();//这里加上就会显示在前台
-        LogUtils.d("onCreate");
         try {
+      //      Thread.sleep(60000);//触发ANR问题
             Thread.sleep(60);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+        initNotice();//这里加上就会显示在前台
+        LogUtils.d("onCreate");
+
     }
 
     private void initNotice() {
