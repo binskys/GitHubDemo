@@ -31,6 +31,12 @@ public class DataUtils {
         list.add(new DataBean("6. 自定义圆环进度条",
         "看着别人的敲了一边",
                 UrlList.CircleBar));
+        list.add(new DataBean("7. glide的基本使用以及原理 ",
+        "Glide是Google推荐的一套快速高效的图片加载框架，作者是bumptech",
+                UrlList.GlideURL));
+        list.add(new DataBean("8. Android四大图片缓存（Imageloader,Picasso,Glide,Fresco）原理、特性对比",
+        "Android四大图片缓存（Imageloader,Picasso,Glide,Fresco）原理、特性对比",
+                UrlList.ImageCache));
 
         return list;
     }

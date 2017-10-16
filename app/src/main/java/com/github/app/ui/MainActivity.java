@@ -3,6 +3,7 @@ package com.github.app.ui;
 import android.animation.Animator;
 import android.animation.ObjectAnimator;
 import android.content.ComponentName;
+import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.IBinder;
 import android.os.Bundle;
@@ -115,10 +116,22 @@ public class MainActivity extends BaseActivity {
             case 5:
                 startActivity(CircleBarActivity.class, null);
                 break;
+            case 6:
+            case 7:
+                startWeb(list.get(position));
+                break;
             default:
                 ToastUtils.toast("无数据");
                 break;
         }
+    }
+
+    private void startWeb(DataBean dataBean) {
+        Intent intent=new Intent(this, WebActivity.class);
+        Bundle bundle=new Bundle();
+        bundle.putSerializable("beanData",dataBean);
+        intent.putExtras(bundle);
+        startActivity(intent);
     }
 
 
