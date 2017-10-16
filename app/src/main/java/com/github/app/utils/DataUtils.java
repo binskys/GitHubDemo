@@ -3,6 +3,8 @@ package com.github.app.utils;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.github.app.utils.UrlList.CircleBar;
+
 /**
  * Created by benny
  * on 2017/10/13.
@@ -26,6 +28,9 @@ public class DataUtils {
         list.add(new DataBean("5. 视频播放器",
         "PLDroidPlayer 是一个适用于 Android 平台的音视频播放器 SDK，可高度定制化和二次开发，为 Android 开发者提供了简单、快捷的接口，帮助开发者在 Android 平台上快速开发播放器应用。",
                 "https://developer.qiniu.com/pili/sdk/1210/the-android-client-sdk"));
+        list.add(new DataBean("6. 自定义圆环进度条",
+        "看着别人的敲了一边",
+                UrlList.CircleBar));
 
         return list;
     }

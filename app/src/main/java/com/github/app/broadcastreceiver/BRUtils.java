@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 
-import com.github.app.MainActivity;
 import com.github.app.utils.LogUtils;
 
 /**

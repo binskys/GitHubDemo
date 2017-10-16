@@ -8,8 +8,8 @@ import android.content.Intent;
 import android.os.Binder;
 import android.os.IBinder;
 
-import com.github.app.MainActivity;
 import com.github.app.R;
+import com.github.app.ui.MainActivity;
 import com.github.app.utils.LogUtils;
 
 /**

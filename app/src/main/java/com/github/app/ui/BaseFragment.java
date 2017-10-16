@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
-import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +14,7 @@ import android.view.ViewGroup;
  * on 2017/10/13.
  */
 
-public abstract class BaseFragment extends Fragment {
+public class BaseFragment extends Fragment implements View.OnClickListener{
 
     public Intent intent;
     public FragmentActivity fragAct;
@@ -33,9 +32,10 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        View view=getView();
         fragAct=getActivity();
         intent=fragAct.getIntent();
-        initView();
+        bindView(view);
         initIntent();
     }
 
@@ -44,7 +44,7 @@ public abstract class BaseFragment extends Fragment {
         super.onResume();
     }
 
-    public abstract void initView();
+    public void bindView(View view){};
 
 
 
@@ -67,4 +67,8 @@ public abstract class BaseFragment extends Fragment {
         startActivityForResult(intent, requestCode);
     }
 
+    @Override
+    public void onClick(View v) {
+
+    }
 }

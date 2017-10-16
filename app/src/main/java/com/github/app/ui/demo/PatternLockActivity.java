@@ -55,8 +55,8 @@ public class PatternLockActivity extends BaseActivity {
     }
 
     @Override
-    public void initView() {
-        super.initView();
+    public void bindView() {
+        super.bindView();
         mPatternLockView = (PatternLockView) findViewById(R.id.pattern_lock_view);
         tvsub = (TextView) findViewById(R.id.tv_sub);
 

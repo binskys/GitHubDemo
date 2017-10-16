@@ -2,7 +2,7 @@ package com.github.app.utils;
 
 import android.widget.Toast;
 
-import com.github.app.MyApp;
+import com.github.app.ui.MyApp;
 
 /**
  * Toast统一管理类

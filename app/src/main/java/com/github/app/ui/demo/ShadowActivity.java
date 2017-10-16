@@ -32,8 +32,8 @@ public class ShadowActivity extends BaseActivity {
     }
 
     @Override
-    public void initView() {
-        super.initView();
+    public void bindView() {
+        super.bindView();
 
         this.shadow = (ShadowImageView) findViewById(R.id.shadow);
         this.seekBar = (AppCompatSeekBar) findViewById(R.id.seekbar);

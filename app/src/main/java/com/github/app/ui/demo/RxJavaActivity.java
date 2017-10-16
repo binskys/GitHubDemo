@@ -22,8 +22,8 @@ public class RxJavaActivity extends BaseActivity {
     }
 
     @Override
-    public void initView() {
-        super.initView();
+    public void bindView() {
+        super.bindView();
 
         funOne();
         funTwo();

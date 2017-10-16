@@ -6,7 +6,7 @@ import android.view.View;
 import com.github.app.R;
 import com.github.app.ui.BaseActivity;
 import com.github.app.utils.Config;
-import com.github.app.utils.VideoUrl;
+import com.github.app.utils.UrlList;
 import com.github.app.widget.MediaController;
 import com.pili.pldroid.player.AVOptions;
 import com.pili.pldroid.player.PLMediaPlayer;
@@ -38,15 +38,15 @@ public class VideoActivity extends BaseActivity implements
     }
 
     @Override
-    public void initView() {
-        super.initView();
+    public void bindView() {
+        super.bindView();
         mVideoView = (PLVideoTextureView) findViewById(R.id.PLVideoTextureView);
         initSetting();
         isPath = true;
 
         //本地的视频  需要在手机SD卡根目录添加一个 fl1234.mp4 视频
         String videoUrl1 = Environment.getExternalStorageDirectory().getPath()+"/fl1234.mp4" ;
-        initSetAddress(VideoUrl.big_buck_bunny);
+        initSetAddress(UrlList.big_buck_bunny);
         initPlayStatus();
     }
 

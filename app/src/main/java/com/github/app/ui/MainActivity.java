@@ -1,10 +1,9 @@
-package com.github.app;
+package com.github.app.ui;
 
 import android.animation.Animator;
 import android.animation.ObjectAnimator;
 import android.content.ComponentName;
 import android.content.ServiceConnection;
-import android.os.Binder;
 import android.os.IBinder;
 import android.os.Bundle;
 import android.view.View;
@@ -12,10 +11,11 @@ import android.view.ViewTreeObserver;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.github.app.R;
 import com.github.app.adapter.GitHubAdapter;
 import com.github.app.broadcastreceiver.BRUtils;
 import com.github.app.service.GitHubService;
-import com.github.app.ui.BaseActivity;
+import com.github.app.ui.demo.CircleBarActivity;
 import com.github.app.ui.demo.PatternLockActivity;
 import com.github.app.ui.demo.RxJavaActivity;
 import com.github.app.ui.demo.ShadowActivity;
@@ -61,12 +61,12 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public int bindLayout() {
-        return R.layout.activity_main;
+        return R.layout.fragment_main;
     }
 
     @Override
-    public void initView() {
-        super.initView();
+    public void bindView() {
+        super.bindView();
         list = DataUtils.getDataList();
         github = (ListView) findViewById(R.id.demo_list);
         github.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -112,6 +112,9 @@ public class MainActivity extends BaseActivity {
             case 4:
                 startActivity(VideoActivity.class, null);
                 break;
+            case 5:
+                startActivity(CircleBarActivity.class, null);
+                break;
             default:
                 ToastUtils.toast("无数据");
                 break;
@@ -120,7 +123,7 @@ public class MainActivity extends BaseActivity {
 
 
     @Override
-    protected void onResume() {
+    public void onResume() {
         super.onResume();
         if (spruceAnimator != null) {
             spruceAnimator.start();
@@ -183,7 +186,7 @@ public class MainActivity extends BaseActivity {
     }
 
     @Override
-    protected void onDestroy() {
+    public void onDestroy() {
         super.onDestroy();
         BRUtils.unRegister(this);
     }

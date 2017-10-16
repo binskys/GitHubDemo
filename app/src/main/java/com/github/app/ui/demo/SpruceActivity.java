@@ -14,7 +14,7 @@ public class SpruceActivity extends BaseActivity {
     }
 
     @Override
-    public void initView() {
-        super.initView();
+    public void bindView() {
+        super.bindView();
     }
 }

@@ -4,9 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 
-import com.github.app.MainActivity;
-import com.github.app.service.GitHubService;
-
 /**
  * Created by benny
  * on 2017/10/13.

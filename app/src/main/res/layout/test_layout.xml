@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_num"
+            android:layout_width="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:layout_height="wrap_content"
+            android:text="0.00" />
+        <com.github.app.widget.CircleBarView
+            android:id="@+id/barView"
+            android:layout_width="500dp"
+            android:layout_height="300dp"
+            app:bar_width="8dp"
+            app:bg_color="#999999"
+            app:progress_color="#ff0"
+            app:start_angle="0"
+            app:sweep_angle="360" />
+
+    </RelativeLayout>
+
+
+    <EditText
+        android:id="@+id/et_pre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/btn_canvas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="绘制" />
+</LinearLayout>

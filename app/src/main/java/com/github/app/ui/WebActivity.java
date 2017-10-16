@@ -28,8 +28,8 @@ public class WebActivity extends BaseActivity {
     }
 
     @Override
-    public void initView() {
-        super.initView();
+    public void bindView() {
+        super.bindView();
         webView = (WebView) findViewById(R.id.webView);
         dataBean = (DataBean) getIntent().getSerializableExtra("beanData");
     }
