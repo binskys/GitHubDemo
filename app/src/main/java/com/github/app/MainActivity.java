@@ -17,7 +17,9 @@ import com.github.app.broadcastreceiver.BRUtils;
 import com.github.app.service.GitHubService;
 import com.github.app.ui.BaseActivity;
 import com.github.app.ui.demo.PatternLockActivity;
+import com.github.app.ui.demo.RxJavaActivity;
 import com.github.app.ui.demo.ShadowActivity;
+import com.github.app.ui.demo.VideoActivity;
 import com.github.app.utils.DataBean;
 import com.github.app.utils.DataUtils;
 import com.github.app.utils.LogUtils;
@@ -103,6 +105,12 @@ public class MainActivity extends BaseActivity {
                 break;
             case 2:
                 startActivity(ShadowActivity.class, null);
+                break;
+            case 3:
+                startActivity(RxJavaActivity.class, null);
+                break;
+            case 4:
+                startActivity(VideoActivity.class, null);
                 break;
             default:
                 ToastUtils.toast("无数据");

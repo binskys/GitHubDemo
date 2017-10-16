@@ -20,6 +20,12 @@ public class DataUtils {
         list.add(new DataBean("3. ShadowImageView",
         "PatternLockView 这个库可以在应用中简单快速的实现图形锁机制。它有大 量的个性化选项可以用于改变功能和外观，以此满足你的需求，非常的实 用。重点是它还支持响应式的 RxJava 2 视图绑定。",
                 "https://github.com/yingLanNull/ShadowImageView"));
+        list.add(new DataBean("4. RxJava的运用",
+        "清晰 & 易懂的 Rxjava 入门教程",
+                "http://www.jianshu.com/p/0cd258eecf60"));
+        list.add(new DataBean("5. 视频播放器",
+        "PLDroidPlayer 是一个适用于 Android 平台的音视频播放器 SDK，可高度定制化和二次开发，为 Android 开发者提供了简单、快捷的接口，帮助开发者在 Android 平台上快速开发播放器应用。",
+                "https://developer.qiniu.com/pili/sdk/1210/the-android-client-sdk"));
 
         return list;
     }
