@@ -128,9 +128,7 @@ public class IjkPlayerActivity extends BaseActivity {
                 onStopVideo();
                 break;
             case R.id.btn_fangda:
-                mBackPressed = true;
-                isStart = false;
-                onStopVideo();
+
                 break;
         }
     }
