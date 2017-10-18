@@ -56,7 +56,7 @@
 
         <activity android:name=".ui.demo.RxJavaActivity" />
         <activity android:name=".ui.demo.CircleBarActivity" />
-        <activity android:name=".ui.demo.IjkPlayerActivity" />
+        <activity android:name=".ui.demo.IjkPlayerActivity"/>
 
     </application>
 

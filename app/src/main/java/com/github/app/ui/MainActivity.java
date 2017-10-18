@@ -111,7 +111,7 @@ public class MainActivity extends BaseActivity {
                 startActivity(RxJavaActivity.class, null);
                 break;
             case 4:
-              //  startActivity(VideoActivity.class, null);
+                startWeb(list.get(position));
                 break;
             case 5:
                 startActivity(CircleBarActivity.class, null);

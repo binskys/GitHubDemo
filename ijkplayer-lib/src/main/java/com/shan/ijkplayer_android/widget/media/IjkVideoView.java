@@ -128,6 +128,17 @@ public class IjkVideoView extends FrameLayout implements MediaController.MediaPl
 
     private TextView subtitleDisplay;
 
+
+    //增加下面方法
+    public IRenderView getmRenderView() {
+        return mRenderView;
+    }
+    public int getmVideoWidth() {
+        return mVideoWidth;
+    }
+    public int getmVideoHeight() {
+        return mVideoHeight;
+    }
     public IjkVideoView(Context context) {
         super(context);
         initVideoView(context);
