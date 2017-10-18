@@ -181,8 +181,8 @@ public class IjkPlayerActivity extends BaseActivity {
     private void onPauseVideo() {
         if (mVideoView==null||!mVideoView.isPlaying())return;
         mVideoView.pause();
-        SPUtils.put(ConfigUtils.PAUSE_TIME, mVideoView.getCurrentPosition());
         stopTime();
+        SPUtils.put(ConfigUtils.PAUSE_TIME, mVideoView.getCurrentPosition());
 
     }
 
