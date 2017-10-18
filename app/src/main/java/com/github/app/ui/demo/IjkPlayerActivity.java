@@ -1,21 +1,19 @@
 package com.github.app.ui.demo;
 
-import android.net.Uri;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.widget.AppCompatSeekBar;
 import android.util.Log;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.SeekBar;
-import android.widget.TableLayout;
 import android.widget.TextView;
 
 
 import com.github.app.R;
 import com.github.app.ui.BaseActivity;
-import com.github.app.utils.ImageCacheUtils;
+import com.github.app.utils.ConfigUtils;
 import com.github.app.utils.LogUtils;
+import com.github.app.utils.SPUtils;
 import com.shan.ijkplayer_android.widget.media.AndroidMediaController;
 import com.shan.ijkplayer_android.widget.media.IjkVideoView;
 
@@ -60,6 +58,13 @@ public class IjkPlayerActivity extends BaseActivity {
     public void bindView() {
         super.bindView();
         initView();
+        initPlayer();
+    }
+
+    /**
+     * 初始化播放器
+     */
+    private void initPlayer() {
         IjkMediaPlayer.loadLibrariesOnce(null);
         IjkMediaPlayer.native_profileBegin("libijkplayer.so");
 
@@ -86,7 +91,6 @@ public class IjkPlayerActivity extends BaseActivity {
         findViewById(R.id.btn_stop).setOnClickListener(this);
         findViewById(R.id.btn_fangda).setOnClickListener(this);
         mSeekBar.setMax(seekBarMax);
-        // mSeekBar.setProgress(56);
         mSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
@@ -101,7 +105,7 @@ public class IjkPlayerActivity extends BaseActivity {
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
-                mVideoView.seekTo(seekBar.getProgress() * mVideoView.getDuration() / 100);
+                mVideoView.seekTo(seekBar.getProgress() * mVideoView.getDuration() / seekBarMax);
             }
         });
     }
@@ -112,19 +116,13 @@ public class IjkPlayerActivity extends BaseActivity {
         super.onClick(v);
         switch (v.getId()) {
             case R.id.btn_start:
-                if (isStart) {
-                    onRestartVideo();
-                } else {
-                    isStart = true;
-                    onStartVideo();
-                }
+                onStartVideo();
                 break;
             case R.id.btn_pause:
                 onPauseVideo();
                 break;
             case R.id.btn_stop:
                 mBackPressed = true;
-                isStart = false;
                 onStopVideo();
                 break;
             case R.id.btn_fangda:
@@ -157,22 +155,33 @@ public class IjkPlayerActivity extends BaseActivity {
         onStopVideo();
     }
 
+    /**
+     * 播放
+     */
     private void onStartVideo() {
+        int pauseTime = (int) SPUtils.get(ConfigUtils.PAUSE_TIME, 0);
+        if (pauseTime != 0) {
+            mVideoView.seekTo(pauseTime);
+        }
+        isStart = true;
         mVideoView.start();
         startTime();
 
     }
 
-    private void onRestartVideo() {
-       // mVideoView.seekTo(mSeekBar.getProgress() * mVideoView.getDuration() / 100);
-        startTime();
-    }
-
+    /**
+     * 暂停
+     */
     private void onPauseVideo() {
         mVideoView.pause();
+        SPUtils.put(ConfigUtils.PAUSE_TIME, mVideoView.getCurrentPosition());
         stopTime();
+
     }
 
+    /**
+     * 停止
+     */
     private void onStopVideo() {
         //点击返回或不允许后台播放时 释放资源
         if (mBackPressed || !mVideoView.isBackgroundPlayEnabled()) {
@@ -186,12 +195,16 @@ public class IjkPlayerActivity extends BaseActivity {
         stopTime();
     }
 
+    /**
+     * 开始播放计时 通过定时器间隔发送handle消息刷新播放时间
+     */
     private void startTime() {
         countTime();
         timer = new Timer();
         task = new TimerTask() {
             @Override
             public void run() {
+                //视频开始播放时使用handle.sendMessageDelayed更新时间显示
                 handler.sendEmptyMessage(10);
             }
         };
@@ -199,13 +212,19 @@ public class IjkPlayerActivity extends BaseActivity {
 
     }
 
+    /**
+     * 停止播放后，时间也停止
+     */
     private void stopTime() {
         if (timer == null || task == null) return;
         timer.cancel();
         task.cancel();
+        SPUtils.put(ConfigUtils.PAUSE_TIME, 0);
     }
 
-    //视频开始播放时使用handle.sendMessageDelayed更新时间显示
+    /**
+     * 刷新时间
+     */
     private void refreshTime() {
         int totalSeconds = mVideoView.getDuration() / 1000;
         int currentSeconds = mVideoView.getCurrentPosition() / 1000;
@@ -223,7 +242,10 @@ public class IjkPlayerActivity extends BaseActivity {
 
     }
 
-    //视频开始播放时使用handle.sendMessageDelayed更新时间显示
+    /**
+     * 计算视频总时间
+     */
+
     private void countTime() {
         int totalSeconds = mVideoView.getDuration() / 1000;
         int seconds = totalSeconds % 60;
