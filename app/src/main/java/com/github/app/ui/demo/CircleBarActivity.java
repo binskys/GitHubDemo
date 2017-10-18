@@ -10,11 +10,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.github.app.R;
 import com.github.app.ui.BaseActivity;
+import com.github.app.utils.ImageCacheUtils;
 import com.github.app.utils.LinearGradientUtil;
 import com.github.app.utils.UrlList;
 import com.github.app.widget.CircleBarView;
+import com.squareup.picasso.Picasso;
 import com.yinglan.shadowimageview.ShadowImageView;
 
 import java.text.DecimalFormat;
@@ -49,13 +52,12 @@ public class CircleBarActivity extends BaseActivity {
     }
 
     private void initImage() {
-        Glide.with(this)//传入函数
-                .load(UrlList.ImageUrl)//资源
-                .placeholder(R.mipmap.android0)//占位符
-                .error(R.mipmap.android)//加载失败
-                .crossFade()//动画
-               // .override(150, 150)// 调整图片大小
-                .into(shadow);
+        addGlideView();
+      //  Picasso.with(this).load(UrlList.ImageUrl2).placeholder(R.mipmap.android).into(shadow);
+    }
+
+    private void addGlideView() {
+        ImageCacheUtils.loadImage(this,UrlList.ImageUrl2,shadow,true,200,200);
     }
 
     private void initOnClick() {

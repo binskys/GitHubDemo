@@ -17,10 +17,10 @@ import com.github.app.adapter.GitHubAdapter;
 import com.github.app.broadcastreceiver.BRUtils;
 import com.github.app.service.GitHubService;
 import com.github.app.ui.demo.CircleBarActivity;
+import com.github.app.ui.demo.IjkPlayerActivity;
 import com.github.app.ui.demo.PatternLockActivity;
 import com.github.app.ui.demo.RxJavaActivity;
 import com.github.app.ui.demo.ShadowActivity;
-import com.github.app.ui.demo.VideoActivity;
 import com.github.app.utils.DataBean;
 import com.github.app.utils.DataUtils;
 import com.github.app.utils.LogUtils;
@@ -111,14 +111,18 @@ public class MainActivity extends BaseActivity {
                 startActivity(RxJavaActivity.class, null);
                 break;
             case 4:
-                startActivity(VideoActivity.class, null);
+              //  startActivity(VideoActivity.class, null);
                 break;
             case 5:
                 startActivity(CircleBarActivity.class, null);
                 break;
             case 6:
             case 7:
+            case 8:
                 startWeb(list.get(position));
+            break;
+            case 9:
+                startActivity(IjkPlayerActivity.class,null);
                 break;
             default:
                 ToastUtils.toast("无数据");

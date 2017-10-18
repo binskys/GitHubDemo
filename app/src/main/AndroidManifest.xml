@@ -55,8 +55,8 @@
             android:exported="true"/>
 
         <activity android:name=".ui.demo.RxJavaActivity" />
-        <activity android:name=".ui.demo.VideoActivity" />
         <activity android:name=".ui.demo.CircleBarActivity" />
+        <activity android:name=".ui.demo.IjkPlayerActivity" />
 
     </application>
 

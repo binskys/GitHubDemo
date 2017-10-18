@@ -34,9 +34,15 @@ public class DataUtils {
         list.add(new DataBean("7. glide的基本使用以及原理 ",
         "Glide是Google推荐的一套快速高效的图片加载框架，作者是bumptech",
                 UrlList.GlideURL));
-        list.add(new DataBean("8. Android四大图片缓存（Imageloader,Picasso,Glide,Fresco）原理、特性对比",
+        list.add(new DataBean("8. Picasso使用简介及分析 ",
+        "Picasso是Square公司出品的一款非常优秀的开源图片加载库，是目前Android开发中超级流行的图片加载库之一",
+                UrlList.PicassoURL));
+        list.add(new DataBean("9. Android四大图片缓存（Imageloader,Picasso,Glide,Fresco）原理、特性对比",
         "Android四大图片缓存（Imageloader,Picasso,Glide,Fresco）原理、特性对比",
                 UrlList.ImageCache));
+        list.add(new DataBean("10. ijkplayer应用",
+        "ijkplayer是一个基于FFmpeg的轻量级Android/iOS视频播放器",
+                UrlList.ijkPalyer));
 
         return list;
     }
