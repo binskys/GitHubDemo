@@ -27,7 +27,14 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.hardware.camera.autofocus" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
-
+    <!-- 适配Android6.0/7.0 -->
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-feature
+        android:name="android.hardware.bluetooth_le"
+        android:required="true" />
     <application
         android:name=".ui.MyApp"
         android:allowBackup="true"
@@ -57,6 +64,7 @@
         <activity android:name=".ui.demo.RxJavaActivity" />
         <activity android:name=".ui.demo.CircleBarActivity" />
         <activity android:name=".ui.demo.IjkPlayerActivity"/>
+        <activity android:name=".ui.demo.BluetoothActivity"/>
 
     </application>
 

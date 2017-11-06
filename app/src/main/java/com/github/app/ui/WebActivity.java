@@ -1,17 +1,9 @@
 package com.github.app.ui;
 
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.webkit.WebView;
-import android.widget.AdapterView;
-import android.widget.ListView;
 
 import com.github.app.R;
-import com.github.app.utils.DataBean;
-import com.github.app.utils.DataUtils;
+import com.github.app.bean.DataBean;
 
 /**
  * Created by benny

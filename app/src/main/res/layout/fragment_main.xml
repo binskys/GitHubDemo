@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.github.app.ui.fragment.MainFragment">
+    tools:context="com.github.app.ui.MainActivity">
 
     <HorizontalScrollView
         android:layout_width="match_parent"

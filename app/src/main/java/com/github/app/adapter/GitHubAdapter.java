@@ -11,8 +11,7 @@ import android.widget.TextView;
 
 import com.github.app.R;
 import com.github.app.ui.WebActivity;
-import com.github.app.utils.DataBean;
-import com.github.app.utils.DataUtils;
+import com.github.app.bean.DataBean;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,33 +21,13 @@ import java.util.List;
  * on 2017/10/13.
  */
 
-public class GitHubAdapter extends BaseAdapter {
-
-    private Context context;
-    private List<DataBean> list = new ArrayList<>();
-
+public class GitHubAdapter extends GitHubBaseAdapter<DataBean> {
     public GitHubAdapter(Context context, List<DataBean> list) {
-        this.context = context;
-        this.list = list;
+        super(context, list);
     }
 
     @Override
-    public int getCount() {
-        return list.size();
-    }
-
-    @Override
-    public Object getItem(int position) {
-        return position;
-    }
-
-    @Override
-    public long getItemId(int position) {
-        return position;
-    }
-
-    @Override
-    public View getView(final int position, View convertView, ViewGroup parent) {
+    protected View itemView(final int position, View convertView, ViewGroup parent) {
         GitHubHolder hubHolder=null;
         if (convertView == null) {
             hubHolder=new GitHubHolder();
@@ -76,9 +55,4 @@ public class GitHubAdapter extends BaseAdapter {
         return convertView;
     }
 
-    private class GitHubHolder {
-        TextView title;
-        TextView describe;
-        TextView address;
-    }
 }

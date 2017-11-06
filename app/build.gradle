@@ -5,7 +5,7 @@ android {
     buildToolsVersion "26.0.1"
     defaultConfig {
         applicationId "com.github.app"
-        minSdkVersion 16
+        minSdkVersion 18
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
@@ -63,4 +63,8 @@ dependencies {
     compile 'com.github.bumptech.glide:glide:3.7.0'
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile project(path: ':ijkplayer-lib')
+    compile 'com.android.support:gridlayout-v7:25.3.1'
+
+   // Android BLE基础框架
+    compile 'com.vise.xiaoyaoyou:baseble:2.0.0'
 }

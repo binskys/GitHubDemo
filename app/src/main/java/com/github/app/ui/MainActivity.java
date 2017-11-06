@@ -16,12 +16,13 @@ import com.github.app.R;
 import com.github.app.adapter.GitHubAdapter;
 import com.github.app.broadcastreceiver.BRUtils;
 import com.github.app.service.GitHubService;
+import com.github.app.ui.demo.BluetoothActivity;
 import com.github.app.ui.demo.CircleBarActivity;
 import com.github.app.ui.demo.IjkPlayerActivity;
 import com.github.app.ui.demo.PatternLockActivity;
 import com.github.app.ui.demo.RxJavaActivity;
 import com.github.app.ui.demo.ShadowActivity;
-import com.github.app.utils.DataBean;
+import com.github.app.bean.DataBean;
 import com.github.app.utils.DataUtils;
 import com.github.app.utils.LogUtils;
 import com.github.app.service.ServiceUtils;
@@ -96,32 +97,35 @@ public class MainActivity extends BaseActivity {
 
     private void switchItem(AdapterView<?> parent, View view, int position) {
         Bundle bundle = new Bundle();
-        switch (position) {
-            case 0:
+        switch (list.get(position).getTag()) {
+            case 11:
+                startActivity(BluetoothActivity.class, null);
+                break;
+            case 1:
                 mAdapter.notifyDataSetChanged();
                 ToastUtils.toast("当前界面动画");
                 break;
-            case 1:
+            case 2:
                 startActivity(PatternLockActivity.class, null);
                 break;
-            case 2:
+            case 3:
                 startActivity(ShadowActivity.class, null);
                 break;
-            case 3:
+            case 4:
                 startActivity(RxJavaActivity.class, null);
                 break;
-            case 4:
-                startWeb(list.get(position));
-                break;
             case 5:
-                startActivity(CircleBarActivity.class, null);
+                startWeb(list.get(position));
                 break;
             case 6:
+                startActivity(CircleBarActivity.class, null);
+                break;
             case 7:
             case 8:
+            case 9:
                 startWeb(list.get(position));
             break;
-            case 9:
+            case 10:
                 startActivity(IjkPlayerActivity.class,null);
                 break;
             default:
@@ -184,7 +188,7 @@ public class MainActivity extends BaseActivity {
                 ServiceUtils.unBind(this,connection);
                 break;
             case R.id.register:
-                BRUtils.register(this,"com.github.app.broadcastreceiver");//监听网络状态广播
+                BRUtils.register(this,BRUtils.NET_ACTION);//监听网络状态广播
                 break;
             case R.id.un_register:
                 BRUtils.unRegister(this);
@@ -194,7 +198,7 @@ public class MainActivity extends BaseActivity {
                 TimerTask task=  new TimerTask() {
                     @Override
                     public void run() {
-                        BRUtils.send(MainActivity.this,"com.github.app.broadcastreceiver");
+                        BRUtils.send(MainActivity.this,BRUtils.NET_ACTION);
                     }
                 };
                 time.schedule(task,1000,3000);
